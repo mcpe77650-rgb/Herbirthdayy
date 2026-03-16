@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday My Cutiee Madam Jii ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+text-align:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+overflow-x:hidden;
+}
+
+h1{
+font-size:48px;
+margin-top:40px;
+}
+
+p{
+font-size:20px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ff2e63;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff0040;
+transform:scale(1.1);
+}
+
+/* slideshow */
+
+#slideshow img{
+width:260px;
+height:260px;
+border-radius:20px;
+object-fit:cover;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+margin-top:20px;
+}
+
+/* love letter */
+
+#loveLetter{
+display:none;
+background:white;
+color:#333;
+padding:20px;
+width:320px;
+margin:20px auto;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+/* cake */
+
+#cakeSection{
+display:none;
+margin-top:20px;
+}
+
+#cake{
+font-size:120px;
+animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+}
+
+#flames{
+font-size:40px;
+}
+
+/* countdown */
+
+#countdown{
+font-size:28px;
+margin-top:10px;
+}
+
+/* falling hearts */
+
+.heart{
+position:fixed;
+top:-10px;
+color:red;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Cutiee Madam Jii ❤️</h1>
+
+<p>You are the most beautiful part of my life 💖</p>
+
+<div id="countdown"></div>
+
+<!-- PHOTO SLIDESHOW -->
+
+<div id="slideshow">
+<img id="photo" src="IMG_20240926_124518_1.jpg">
+</div>
+
+<br>
+
+<button onclick="showLetter()">Read Birthday Letter 💌</button>
+
+<div id="loveLetter">
+<h3>My Love Letter</h3>
+<p>
+Happy Birthday Dodo ❤️  
+Every moment with you feels magical.  
+Your smile lights up my world and your love fills my heart.  
+Today is your special day and I wish you endless happiness.  
+</p>
+</div>
+
+<br>
+
+<button onclick="openSurprise()">Open Birthday Surprise 🎁</button>
+
+<div id="cakeSection">
+
+<div id="cake">🎂</div>
+
+<div id="flames">🕯️🕯️🕯️</div>
+
+<p>Make a wish and blow the candles 💖</p>
+
+<button onclick="blowCandles()">Blow Candles 💨</button>
+
+</div>
+
+<!-- BACKGROUND MUSIC -->
+
+<audio autoplay loop>
+<source src="shayrana.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* COUNTDOWN */
+
+var birthday=new Date("September 26, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+var now=new Date().getTime();
+var distance=birthday-now;
+
+var days=Math.floor(distance/(1000*60*60*24));
+var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML=
+days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
+
+},1000);
+
+
+/* PHOTO SLIDESHOW */
+
+var images=["IMG_20240926_124518_1.jpg","IMG_20260316_223014_024.jpg","IMG_20241122_122444.jpg","IMG-20240213-WA0070.jpg"];
+var i=0;
+
+setInterval(function(){
+
+i++;
+
+if(i>=images.length){i=0;}
+
+document.getElementById("photo").src=images[i];
+
+},3000);
+
+
+/* SHOW LOVE LETTER */
+
+function showLetter(){
+document.getElementById("loveLetter").style.display="block";
+}
+
+
+/* OPEN SURPRISE */
+
+function openSurprise(){
+document.getElementById("cakeSection").style.display="block";
+}
+
+
+/* BLOW CANDLES */
+
+function blowCandles(){
+
+document.getElementById("flames").innerHTML="✨ Candles Blown! Happy Birthday ❤️";
+
+}
+
+
+/* FALLING HEARTS */
+
+setInterval(function(){
+
+var heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+heart.remove();
+},5000);
+
+},300);
+
+</script>
+
+</body>
+</html>
